@@ -2,6 +2,7 @@ package main
 
 import (
 	"backend_gin/common"
+	"backend_gin/routes"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	"os"
@@ -12,7 +13,7 @@ func main() {
 	db := common.InitDB()
 	defer db.Close()
 	r := gin.Default()
-	r = CollectRouter(r)
+	r = routes.CollectRouter(r)
 	port := viper.GetString("server.port")
 	if port != "" {
 		panic(r.Run(":" + port))
