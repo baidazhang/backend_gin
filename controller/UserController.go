@@ -52,7 +52,7 @@ func Register(ctx *gin.Context) {
 		Telephone: telephone,
 		Password:  string(hasedPassword),
 	}
-	DB.Create(newUser)
+	DB.Create(&newUser)
 
 	//发放token
 	token, err := common.ReleaseToken(newUser)
